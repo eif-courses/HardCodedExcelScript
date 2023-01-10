@@ -95,9 +95,9 @@ for(let row of vkdeFormData){
       let total_students = 20;
     finalTable.addRow(-1, 
     [
-      row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,total_students, col.Semestras,
+      row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,"999", col.Semestras,
       row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-      row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.VisoKontaktas,
+      row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
       row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
       row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, ""
     ]);
