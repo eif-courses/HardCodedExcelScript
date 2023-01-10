@@ -90,12 +90,12 @@ function main(workbook: ExcelScript.Workbook) : string {
 
 for(let row of vkdeFormData){
   for (let col of groups) {
-    if(row.Semestras == col.Semestras){
+    if (+col.Semestras.toString() == 1 && +row.Semestras.toString() == 1 && col.Grupe.toString().includes("22")){
 
-      let total_students = 20;
+      let total_students = +col.VF.toString() + +col.VNF.toString();
     finalTable.addRow(-1, 
     [
-      row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,"999", col.Semestras,
+      row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,total_students, col.Semestras,
       row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
       row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
       row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
