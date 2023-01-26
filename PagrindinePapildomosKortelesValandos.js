@@ -1,3 +1,6 @@
+// Algoritmo sudėtingumas O (n^2), tik su mažais rinkiniais 
+
+
 function findSubarrays(n, arr) {
     if(n < 715 || n > 720) {
       console.log("n must be between 715 and 720")
