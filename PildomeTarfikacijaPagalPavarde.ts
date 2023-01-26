@@ -33,7 +33,7 @@ if (subarray.length > 0) {
 
   // Papildoma kortele
   const currentSheetPapildoma = workbook.getWorksheet("VK4 forma");
-  const tablePapildoma = currentSheet.getTable("TarifikacijaKontaktas");
+  const tablePapildoma = currentSheet.getTable("PapildomaKontaktas");
   //for(let row of subjects){
   const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
   row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
@@ -41,7 +41,7 @@ if (subarray.length > 0) {
   table.addRows(-1, tableValuesPapildoma);
 
   const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
-  const finalTablePapildoma = finalSheet.getTable("TarifikacijaNekontaktinis");
+  const finalTablePapildoma = finalSheet.getTable("PapildomaNekontaktinis");
 
   const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
   row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
@@ -75,7 +75,7 @@ if (subarray.length > 0) {
 
       // Papildoma kortele
       const currentSheetPapildoma = workbook.getWorksheet("VK4 forma");
-      const tablePapildoma = currentSheet.getTable("TarifikacijaKontaktas");
+      const tablePapildoma = currentSheet.getTable("PapildomaKontaktas");
       //for(let row of subjects){
       const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
       row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
@@ -83,7 +83,7 @@ if (subarray.length > 0) {
       table.addRows(-1, tableValuesPapildoma);
 
       const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
-      const finalTablePapildoma = finalSheet.getTable("TarifikacijaNekontaktinis");
+      const finalTablePapildoma = finalSheet.getTable("PapildomaNekontaktinis");
 
       const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
       row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
