@@ -26,3 +26,23 @@ while(subarray.length == 0 && n > 715){
         break;
     }
 }
+
+
+
+// Typescript version 
+function findSubarrays(n: number, arr: number[]): [number[], number[]] {
+    if(n < 715 || n > 720) {
+      console.log("n must be between 715 and 720")
+      return [[],[]];
+    }
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr.length; j++) {
+            if (arr.slice(i, j + 1).reduce((acc, cur) => acc + cur) === n) {
+                let subArray = arr.slice(i, j + 1);
+                let remainingElements = arr.filter(x => !subArray.includes(x));
+                return [subArray, remainingElements];
+            }
+        }
+    }
+    return [[],[]];
+}
