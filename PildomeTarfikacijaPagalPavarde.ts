@@ -5,29 +5,98 @@ function main(workbook: ExcelScript.Workbook, planData: object[]) {
 
   // const range = table.getRange();
   // let rows = range.getValues();
-
-
-
-  
+ 
+ // SKAITOME MASYVA[0] IŠ JSON OBJEKTO NES GRĄŽINA MASYVO MASYVA [[ ]]
 const subjects: DatabaseData[] = planData[0] as DatabaseData[];
+let n = 720;
+const [subarray, remainingElements] = findSubarrays(n, subjects);
+if (subarray.length > 0) {
+ // console.log(subarray); // Pagrindinė kortelė
+  //console.log(remainingElements); // Papildoma kortelė
 
-const currentSheet = workbook.getWorksheet("VK3 forma");
-const table = currentSheet.getTable("TarifikacijaKontaktas");
-//for(let row of subjects){
-const tableValues = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe, 
-row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-row.NPaskaitos, row.NPraktikumai,row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "",""]);
-table.addRows(-1, tableValues);
+// Pagrindine kortele
+  const currentSheet = workbook.getWorksheet("VK3 forma");
+  const table = currentSheet.getTable("TarifikacijaKontaktas");
+  //for(let row of subjects){
+  const tableValues = subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
+  row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+  row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
+  table.addRows(-1, tableValues);
 
-const finalSheet = workbook.getWorksheet("VK3 forma");
-const finalTable = finalSheet.getTable("TarifikacijaNekontaktinis");
+  const finalSheet = workbook.getWorksheet("VK3 forma");
+  const finalTable = finalSheet.getTable("TarifikacijaNekontaktinis");
 
-const tableValuesPapildoma = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe,
-row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
-row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "",""]);
-finalTable.addRows(-1, tableValuesPapildoma);
+  const tableValuesNekontaktas = subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
+  row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+  row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
+  finalTable.addRows(-1, tableValuesNekontaktas);
 
-console.log(tableValues);
+  // Papildoma kortele
+  const currentSheetPapildoma = workbook.getWorksheet("VK4 forma");
+  const tablePapildoma = currentSheet.getTable("TarifikacijaKontaktas");
+  //for(let row of subjects){
+  const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
+  row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+  row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
+  table.addRows(-1, tableValuesPapildoma);
+
+  const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
+  const finalTablePapildoma = finalSheet.getTable("TarifikacijaNekontaktinis");
+
+  const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
+  row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+  row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
+  finalTable.addRows(-1, tableValuesPapildomaNekontaktas);
+
+}
+
+  while (subarray.length == 0 && n > 715) {
+    const [subarray, remainingElements] = findSubarrays(n--, subjects);
+    if (subarray.length != 0) {
+      //console.log(subarray);
+     // console.log(remainingElements);
+
+      // Pagrindine kortele
+      const currentSheet = workbook.getWorksheet("VK3 forma");
+      const table = currentSheet.getTable("TarifikacijaKontaktas");
+      //for(let row of subjects){
+      const tableValues = subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
+      row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+      row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
+      table.addRows(-1, tableValues);
+
+      const finalSheet = workbook.getWorksheet("VK3 forma");
+      const finalTable = finalSheet.getTable("TarifikacijaNekontaktinis");
+
+      const tableValuesNekontaktas = subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
+      row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+      row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
+      finalTable.addRows(-1, tableValuesNekontaktas);
+
+      // Papildoma kortele
+      const currentSheetPapildoma = workbook.getWorksheet("VK4 forma");
+      const tablePapildoma = currentSheet.getTable("TarifikacijaKontaktas");
+      //for(let row of subjects){
+      const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
+      row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+      row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
+      table.addRows(-1, tableValuesPapildoma);
+
+      const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
+      const finalTablePapildoma = finalSheet.getTable("TarifikacijaNekontaktinis");
+
+      const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
+      row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+      row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
+      finalTable.addRows(-1, tableValuesPapildomaNekontaktas);
+
+      break;
+    }
+  }
+
+
+
+//console.log(tableValues);
 
 
 //}
@@ -86,7 +155,22 @@ console.log(tableValues);
   // console.log(JSON.stringify(records));
   // return JSON.stringify(records);  
 }
-
+function findSubarrays(n: number, arr: DatabaseData[]): [DatabaseData[], DatabaseData[]]{
+  if (n < 715 || n > 720) {
+    console.log("n must be between 715 and 720")
+    return [[], []];
+  }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+      if (arr.slice(i, j + 1).reduce((acc, cur) => acc + +cur.VISOSTUDENTU, 0) === n) {
+        let subArray = arr.slice(i, j + 1);
+        let remainingElements = arr.filter(x => !subArray.includes(x));
+        return [subArray, remainingElements];
+      }
+    }
+  }
+  return [[], []];
+}
 
 
 
