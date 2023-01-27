@@ -26,7 +26,7 @@ if (subarray.length > 0) {
   const finalSheet = workbook.getWorksheet("VK3 forma");
   const finalTable = finalSheet.getTable("TarifikacijaNekontaktinis");
 
-  const tableValuesNekontaktas = subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
+  const tableValuesNekontaktas =  subarray.map(row => [row.Eil, row.Dalykas, row.Grupe,
   row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
   row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
   finalTable.addRows(-1, tableValuesNekontaktas);
@@ -38,7 +38,9 @@ if (subarray.length > 0) {
   const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
   row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
   row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
-  table.addRows(-1, tableValuesPapildoma);
+  tablePapildoma.addRows(-1, tableValuesPapildoma);
+
+//console.log(tableValuesPapildoma);
 
   const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
   const finalTablePapildoma = finalSheet.getTable("PapildomaNekontaktinis");
@@ -46,7 +48,10 @@ if (subarray.length > 0) {
   const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
   row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
   row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
-  finalTable.addRows(-1, tableValuesPapildomaNekontaktas);
+  finalTablePapildoma.addRows(-1, tableValuesPapildomaNekontaktas);
+
+//console.log(tableValuesPapildomaNekontaktas);
+
 
 }
 
@@ -80,7 +85,7 @@ if (subarray.length > 0) {
       const tableValuesPapildoma = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
       row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
       row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
-      table.addRows(-1, tableValuesPapildoma);
+      tablePapildoma.addRows(-1, tableValuesPapildoma);
 
       const finalSheetPapildoma = workbook.getWorksheet("VK4 forma");
       const finalTablePapildoma = finalSheet.getTable("PapildomaNekontaktinis");
@@ -88,7 +93,8 @@ if (subarray.length > 0) {
       const tableValuesPapildomaNekontaktas = remainingElements.map(row => [row.Eil, row.Dalykas, row.Grupe,
       row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
       row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
-      finalTable.addRows(-1, tableValuesPapildomaNekontaktas);
+      finalTablePapildoma.addRows(-1, tableValuesPapildomaNekontaktas);
+     
 
       break;
     }
