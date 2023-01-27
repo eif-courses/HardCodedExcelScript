@@ -1,7 +1,7 @@
 let records: StudyPlan[] = [];
 let vkdeFormData: VKDE01[] = [];
 function main(workbook: ExcelScript.Workbook) {
-  let sheets: Array<string> = ['Studijų planas (Dieninis)']
+  let sheets: Array<string> = ['Studijų planas (Dieninis)', 'Studijų planas (English)']
  
   for(let sheet of sheets){
     createStudyPlan(sheet, workbook);
