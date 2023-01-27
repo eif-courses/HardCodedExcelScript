@@ -60,7 +60,7 @@ function main(workbook: ExcelScript.Workbook) {
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
         } 
         else if (col.Grupe.toString().includes("S") || col.Grupe.toString().includes("E")){
@@ -70,7 +70,7 @@ function main(workbook: ExcelScript.Workbook) {
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
         }
         else{
@@ -80,7 +80,7 @@ function main(workbook: ExcelScript.Workbook) {
               "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
         }
        
@@ -93,7 +93,7 @@ function main(workbook: ExcelScript.Workbook) {
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
         
         // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
