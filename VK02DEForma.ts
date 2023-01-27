@@ -37,26 +37,72 @@ function main(workbook: ExcelScript.Workbook) {
 
   }
 
+  // const groupingSheet = workbook.getWorksheet("VK02DE");
+  // const groupingTable = groupingSheet.getTables()[0];
+  // const groupingRange = groupingTable.getRange();
+  // let groupingRows = groupingRange.getValues();
+
   const finalSheet = workbook.getWorksheet("VK02DE");
   const finalTable = finalSheet.getTables()[0];
 
+// && col.Grupe.toString().includes("22")
 
-for(let row of vkdeFormData){
-  for (let col of groups) {
-    if (+col.Semestras.toString() == 1 && +row.Semestras.toString() == 1 && col.Grupe.toString().includes("22")){
-
-      let total_students = +col.VF.toString() + +col.VNF.toString();
-    finalTable.addRow(-1, 
-    [
-      row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,total_students, col.Semestras,
-      row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-      row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
-      row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-      row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
-    ]);
+  for (let row of vkdeFormData) {
+    for (let col of groups) {
+      if (+col.Semestras.toString() == +row.Semestras.toString()) {
+     
+        let total_students = +col.VF.toString() + +col.VNF.toString();
+        
+        if(col.Grupe.toString().length > 10){
+          finalTable.addRow(-1,
+            [
+              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+            ]);
+        } 
+        else if (col.Grupe.toString().includes("S") || col.Grupe.toString().includes("E")){
+          finalTable.addRow(-1,
+            [
+              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+            ]);
+        }
+        else{
+          finalTable.addRow(-1,
+            [
+              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+            ]);
+        }
+       
+      } else if (+col.Semestras + 1 == +row.Semestras) {
+        
+        let total_students = +col.VF.toString() + +col.VNF.toString();
+          finalTable.addRow(-1,
+            [
+              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, row.Semestras,
+              row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
+              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
+            ]);
+        
+        // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
+      }
     }
-}
-}
+  }
+
+
+
 //  console.log(JSON.stringify(groups));
 
   // console.log(JSON.stringify(records));
