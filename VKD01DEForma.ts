@@ -53,25 +53,25 @@ function main(workbook: ExcelScript.Workbook) {
   for (let row of sesijiniaiRecords) {
     switch (row.Semestras) {
       case 1:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP1, row.KPr1, 1, row.NP1, row.NPr1, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr1, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP1, row.KPr1, 1, row.NP1, row.NPr1, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra+'Sesijiniai']);
         break;
       case 2:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP2, row.KPr2, 1, row.NP2, row.NPr2, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr2, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP2, row.KPr2, 1, row.NP2, row.NPr2, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
       case 3:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP3, row.KPr3, 1, row.NP3, row.NPr3, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr3, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP3, row.KPr3, 1, row.NP3, row.NPr3, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
       case 4:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP4, row.KPr4, 1, row.NP4, row.NPr4, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr4, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP4, row.KPr4, 1, row.NP4, row.NPr4, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
       case 5:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP5, row.KPr5, 1, row.NP5, row.NPr5, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr5, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP5, row.KPr5, 1, row.NP5, row.NPr5, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
       case 6:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP6, row.KPr6, 1, row.NP6, row.NPr6, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr6, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP6, row.KPr6, 1, row.NP6, row.NPr6, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
       case 7:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP7, row.KPr7, 1, row.NP7, row.NPr7, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Kr7, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.KP7, row.KPr7, 1, row.NP7, row.NPr7, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Vert, row.Kreditai, row.DalykoKatedra + 'Sesijiniai']);
         break;
     }
     counter++;
@@ -82,6 +82,9 @@ function main(workbook: ExcelScript.Workbook) {
 
 function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
   // Get the first table on the current worksheet.
+
+
+
   if(name.toLowerCase().includes('sesijin'.toLowerCase())){
     const currentSheet = workbook.getWorksheet(name);
     const table = currentSheet.getTables()[0];
@@ -148,6 +151,9 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
       ] = row;
 
       if (Number.isInteger(Semestras)) {
+
+        let tempName = name.toLowerCase().includes('English'.toLowerCase()) ? 'English' : '';  
+
         sesijiniaiRecords.push({
           Eil: Eil,
           Pavadinimas: Pavadinimas,
@@ -198,7 +204,7 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
           Valandos: Valandos,
           Kreditai:Kreditai,
           Semestras:Semestras,
-          DalykoKatedra:DalykoKatedra
+          DalykoKatedra:DalykoKatedra + tempName
         })
       }
     }
