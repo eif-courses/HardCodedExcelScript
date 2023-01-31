@@ -152,8 +152,6 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
 
       if (Number.isInteger(Semestras)) {
 
-        let tempName = name.toLowerCase().includes('English'.toLowerCase()) ? 'English' : '';  
-
         sesijiniaiRecords.push({
           Eil: Eil,
           Pavadinimas: Pavadinimas,
@@ -204,7 +202,7 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
           Valandos: Valandos,
           Kreditai:Kreditai,
           Semestras:Semestras,
-          DalykoKatedra:DalykoKatedra + tempName
+          DalykoKatedra:DalykoKatedra
         })
       }
     }
@@ -308,7 +306,7 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
           Valandos: Valandos,
           Kreditai: Kreditai,
           Semestras: Semestras,
-          DalykoKatedra: DalykoKatedra,
+          DalykoKatedra: DalykoKatedra += name.toLowerCase().includes('English'.toLowerCase()) ? 'English' : '',
         })
       }
     }
