@@ -306,7 +306,7 @@ function createStudyPlan(name:string, workbook: ExcelScript.Workbook){
           Valandos: Valandos,
           Kreditai: Kreditai,
           Semestras: Semestras,
-          DalykoKatedra: DalykoKatedra += name.toLowerCase().includes('English'.toLowerCase()) ? 'English' : '',
+          DalykoKatedra: DalykoKatedra += name.toLowerCase().includes('English'.toLowerCase()) ? 'English' : 'Dieninis',
         })
       }
     }
