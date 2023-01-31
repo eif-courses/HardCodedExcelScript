@@ -1,7 +1,7 @@
 let records: StudyPlan[] = [];
 let vkdeFormData: VKDE01[] = [];
 function main(workbook: ExcelScript.Workbook) {
-  let sheets: Array<string> = ['Studijų planas (Dieninis)', 'Studijų planas (English)']
+  let sheets: Array<string> = ['Studijų planas (Dieninis)']
  
   for(let sheet of sheets){
     createStudyPlan(sheet, workbook);
@@ -11,35 +11,33 @@ function main(workbook: ExcelScript.Workbook) {
   const range = table.getRange();
   let rows = range.getValues();
   
+  let counter = 1;
 
   for (let row of records) {
-    table.addRow(-1, 
-    [
-      row.Eil, 
-      row.Pavadinimas,
-      row.Semestras,
-      row.P1,
-      row.Pr1,
-      1,
-      0,
-      0,
-      "E",
-      0,
-      0,
-      99,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      77,
-      88,
-      "E",
-      row.Kreditai,
-      row.DalykoKatedra
-    ]);
+    switch (row.Semestras) {
+      case 1:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 2:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 3:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 4:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 5:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 6:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+      case 7:
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        break;
+    }
+    counter++;
     //console.log(row.Semestras);
   }
 }
