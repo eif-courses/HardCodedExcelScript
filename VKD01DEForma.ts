@@ -19,22 +19,22 @@ function main(workbook: ExcelScript.Workbook) {
         table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 2:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P2, row.Pr2, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 3:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P3, row.Pr3, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 4:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P4, row.Pr4, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 5:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P5, row.Pr5, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 6:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P6, row.Pr6, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
       case 7:
-        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P1, row.Pr1, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
+        table.addRow(-1, [counter, row.Pavadinimas, row.Semestras, row.P7, row.Pr7, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, row.Tipas, row.Kreditai, row.DalykoKatedra]);
         break;
     }
     counter++;
