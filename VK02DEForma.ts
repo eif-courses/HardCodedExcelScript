@@ -7,8 +7,12 @@ function main(workbook: ExcelScript.Workbook) {
   const range = table.getRange();
   let rows = range.getValues();
   
+  let temp = 0;
   for (let row of rows) {
 
+if(temp == 0){
+  temp++;
+}else{
   let [Eil, Dalykas, Semestras, DPaskaitos, DPraktikumaiValandos, DPraktikumaiPogrupiai, NPaskaitos, NPraktikumai, Egzaminas, Kita, Konsultacijos, VisoKontaktas, TarpSkaicius, TarpValandos, SavarankiskasDarbas, PraktikosAtaskaitos, KursiniaiDarbai, NekontaktinisEgzaminas, NekontaktinisKita, NekontaktinisViso, Viso, AtsiskaitymoForma, Kreditai, Pastabos] = row;
 
   vkdeFormData.push({
@@ -17,6 +21,7 @@ function main(workbook: ExcelScript.Workbook) {
     SavarankiskasDarbas: SavarankiskasDarbas, PraktikosAtaskaitos:PraktikosAtaskaitos,
     KursiniaiDarbai:KursiniaiDarbai, NekontaktinisEgzaminas:NekontaktinisEgzaminas, NekontaktinisKita:NekontaktinisKita, NekontaktinisViso:NekontaktinisKita, Viso:Viso, AtsiskaitymoForma:AtsiskaitymoForma, Kreditai:Kreditai, Pastabos:Pastabos
   })
+}
 }
 
   const otherSheet = workbook.getWorksheet("Grupių planas");
@@ -47,58 +52,60 @@ function main(workbook: ExcelScript.Workbook) {
 
 // && col.Grupe.toString().includes("22")
 
+  let counter = 1;
   for (let row of vkdeFormData) {
     for (let col of groups) {
       if (+col.Semestras.toString() == +row.Semestras.toString()) {
      
-        let total_students = +col.VF.toString() + +col.VNF.toString();
-        
         if(col.Grupe.toString().length > 10){
           finalTable.addRow(-1,
             [
-              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
               row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
+          counter++;
         } 
         else if (col.Grupe.toString().includes("S") || col.Grupe.toString().includes("E")){
           finalTable.addRow(-1,
             [
-              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
               row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
+          counter++;
         }
         else{
           finalTable.addRow(-1,
             [
-              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, col.Semestras,
+              counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
               "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
               row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
+          counter++;
         }
        
       } else if (+col.Semestras + 1 == +row.Semestras) {
         
-        let total_students = +col.VF.toString() + +col.VNF.toString();
           finalTable.addRow(-1,
             [
-              row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF, total_students, row.Semestras,
+              counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, row.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
               row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
               row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
             ]);
-        
+        counter++;
         // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
       }
     }
+   
   }
 
 
