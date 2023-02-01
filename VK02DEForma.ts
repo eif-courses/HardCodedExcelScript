@@ -99,9 +99,9 @@ function main(workbook: ExcelScript.Workbook) {
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
             counter++;
         } 
@@ -110,9 +110,9 @@ function main(workbook: ExcelScript.Workbook) {
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
             counter++;
         }
@@ -120,10 +120,10 @@ function main(workbook: ExcelScript.Workbook) {
           finalTable.addRow(-1,
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
-              "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              null, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
         }
        
@@ -133,9 +133,9 @@ function main(workbook: ExcelScript.Workbook) {
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, row.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
         counter++;
         // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
@@ -155,9 +155,9 @@ function main(workbook: ExcelScript.Workbook) {
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
                 row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
             counter++;
           }
@@ -166,9 +166,9 @@ function main(workbook: ExcelScript.Workbook) {
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
                 row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
             counter++;
           }
@@ -176,10 +176,10 @@ function main(workbook: ExcelScript.Workbook) {
             finalTable.addRow(-1,
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
-                "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                null, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
           }
 
@@ -189,9 +189,9 @@ function main(workbook: ExcelScript.Workbook) {
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, row.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
           counter++;
           // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
@@ -211,9 +211,9 @@ function main(workbook: ExcelScript.Workbook) {
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
                 row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
             counter++;
           }
@@ -222,9 +222,9 @@ function main(workbook: ExcelScript.Workbook) {
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
                 row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
             counter++;
           }
@@ -233,9 +233,9 @@ function main(workbook: ExcelScript.Workbook) {
               [
                 counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, col.Semestras,
                 "", row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+                row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
                 row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-                row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+                row.NekontaktinisKita, null, null, null, row.Pastabos
               ]);
           }
 
@@ -245,9 +245,9 @@ function main(workbook: ExcelScript.Workbook) {
             [
               counter, row.Dalykas, col.Grupe, col.VF, col.VNF, null, row.Semestras,
               row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
+              row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, null,
               row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-              row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", row.Pastabos
+              row.NekontaktinisKita, null, null, null, row.Pastabos
             ]);
           counter++;
           // console.log(col.Grupe + ' ' + row.Semestras + ' ' + row.Dalykas);
