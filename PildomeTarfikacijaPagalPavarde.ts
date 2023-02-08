@@ -2,13 +2,461 @@
 function main(workbook: ExcelScript.Workbook, planData: object[]) {
   let groups: GroupPlan[] = [];
   let vkdeFormData: VKDE01[] = [];
-
-  // const range = table.getRange();
-  // let rows = range.getValues();
  
  // SKAITOME MASYVA[0] IŠ JSON OBJEKTO NES GRĄŽINA MASYVO MASYVA [[ ]]
-const subjects: DatabaseData[] = planData[0] as DatabaseData[];
-let n = 720;
+//let subjects: DatabaseData[] = planData[0] as DatabaseData[];
+
+  const subjects = [
+      {
+        "Eil": null,
+        "Dalykas": "Informacijos sistemos ir jų sauga",
+        "Grupe": "IS22B",
+        "VF": 14,
+        "VNF": 16,
+        "VISOSTUDENTU": null,
+        "Semestras": 2,
+        "DPaskaitos": 32,
+        "DPraktikumaiValandos": 32,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": "",
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "ISDieninis"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Informacijos sistemos ir jų sauga",
+        "Grupe": "IS22C",
+        "VF": 14,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 2,
+        "DPaskaitos": 32,
+        "DPraktikumaiValandos": 32,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": "",
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "ISDieninis"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Introduction to Informatics",
+        "Grupe": "PI22E",
+        "VF": 22,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 1,
+        "DPaskaitos": 36,
+        "DPraktikumaiValandos": 36,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": "",
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "PSEnglish"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Algorithms and Data Structures",
+        "Grupe": "PI22E",
+        "VF": 22,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 2,
+        "DPaskaitos": 48,
+        "DPraktikumaiValandos": 48,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": "",
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "PSEnglish"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Probability Theory and Mathematical Statistics",
+        "Grupe": "PI22E",
+        "VF": 22,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 2,
+        "DPaskaitos": 32,
+        "DPraktikumaiValandos": 16,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": "",
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "PSEnglish"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Informatikos įvadas",
+        "Grupe": "PI22S",
+        "VF": 14,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 1,
+        "DPaskaitos": 10,
+        "DPraktikumaiValandos": 10,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": 26,
+        "NPraktikumai": 26,
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "PSSesijiniai"
+      },
+      {
+        "Eil": null,
+        "Dalykas": "Pirmoji programavimo praktika",
+        "Grupe": "PI22S",
+        "VF": 14,
+        "VNF": "",
+        "VISOSTUDENTU": null,
+        "Semestras": 2,
+        "DPaskaitos": "",
+        "DPraktikumaiValandos": 20,
+        "DPraktikumaiPogrupiai": 1,
+        "NPaskaitos": "",
+        "NPraktikumai": 28,
+        "Egzaminas": null,
+        "Kita": null,
+        "Konsultacijos": null,
+        "VisoKontaktas": null,
+        "TarpSkaicius": null,
+        "TarpValandos": null,
+        "SavarankiskasDarbas": null,
+        "PraktikosAtaskaitos": null,
+        "KursiniaiDarbai": null,
+        "NekontaktinisEgzaminas": null,
+        "NekontaktinisKita": null,
+        "NekontaktinisViso": null,
+        "Viso": null,
+        "Destytojas": "Marius Gžegoževskis",
+        "Katedra": "PSSesijiniai"
+      },
+    {
+      "Eil": null,
+      "Dalykas": "Informacijos sistemos ir jų sauga",
+      "Grupe": "IS22B",
+      "VF": 14,
+      "VNF": 16,
+      "VISOSTUDENTU": null,
+      "Semestras": 2,
+      "DPaskaitos": 32,
+      "DPraktikumaiValandos": 32,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": "",
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "ISDieninis"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Informacijos sistemos ir jų sauga",
+      "Grupe": "IS22C",
+      "VF": 14,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 2,
+      "DPaskaitos": 32,
+      "DPraktikumaiValandos": 32,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": "",
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "ISDieninis"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Introduction to Informatics",
+      "Grupe": "PI22E",
+      "VF": 22,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 1,
+      "DPaskaitos": 36,
+      "DPraktikumaiValandos": 36,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": "",
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "PSEnglish"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Algorithms and Data Structures",
+      "Grupe": "PI22E",
+      "VF": 22,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 2,
+      "DPaskaitos": 48,
+      "DPraktikumaiValandos": 48,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": "",
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "PSEnglish"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Probability Theory and Mathematical Statistics",
+      "Grupe": "PI22E",
+      "VF": 22,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 2,
+      "DPaskaitos": 32,
+      "DPraktikumaiValandos": 16,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": "",
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "PSEnglish"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Informatikos įvadas",
+      "Grupe": "PI22S",
+      "VF": 14,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 1,
+      "DPaskaitos": 10,
+      "DPraktikumaiValandos": 10,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": 26,
+      "NPraktikumai": 26,
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "PSSesijiniai"
+    },
+    {
+      "Eil": null,
+      "Dalykas": "Pirmoji programavimo praktika",
+      "Grupe": "PI22S",
+      "VF": 14,
+      "VNF": "",
+      "VISOSTUDENTU": null,
+      "Semestras": 2,
+      "DPaskaitos": "",
+      "DPraktikumaiValandos": 20,
+      "DPraktikumaiPogrupiai": 1,
+      "NPaskaitos": "",
+      "NPraktikumai": 28,
+      "Egzaminas": null,
+      "Kita": null,
+      "Konsultacijos": null,
+      "VisoKontaktas": null,
+      "TarpSkaicius": null,
+      "TarpValandos": null,
+      "SavarankiskasDarbas": null,
+      "PraktikosAtaskaitos": null,
+      "KursiniaiDarbai": null,
+      "NekontaktinisEgzaminas": null,
+      "NekontaktinisKita": null,
+      "NekontaktinisViso": null,
+      "Viso": null,
+      "Destytojas": "Marius Gžegoževskis",
+      "Katedra": "PSSesijiniai"
+    }
+    ];
+
+ 
+ 
+
+
+  const sheet = workbook.getWorksheet("VK3 forma");
+  let range = sheet.getUsedRange();
+  let values = range.getValues();
+  let findCell = range.find("Su darbo krūviu susipažinau", {
+    completeMatch: true,
+  });
+  const lektorius = subjects[0]['Destytojas'];
+  sheet.getRange("C10").setValue(lektorius);
+  const result = "L"+(findCell.getRowIndex() + 1).toString();
+
+  sheet.getRange(result).setValue(lektorius);
+
+
+  console.log(lektorius);
+  
+  const sumByValue = subjects.reduce((acc, cur) => acc + +cur.DPraktikumaiValandos * +cur.DPraktikumaiPogrupiai + +cur.DPaskaitos + +cur.NPaskaitos + +cur.NPraktikumai * +cur.DPraktikumaiPogrupiai, 0);
+  console.log(sumByValue); 
+
+  if(sumByValue <= 760){
+    //console.log('sudarome tarifikacija tik pagrindineje korteleje');
+    // Pagrindine kortele
+    const table = sheet.getTable("TarifikacijaKontaktas");
+    //for(let row of subjects){
+    const tableValues = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe,
+    (+row.VF+ +row.VNF), row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+    row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
+    table.addRows(-1, tableValues);
+
+    //const finalSheet = workbook.getWorksheet("VK3 forma");
+    const finalTable = sheet.getTable("TarifikacijaNekontaktinis");
+    const tableValuesNekontaktas = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe,
+      (+row.VF + +row.VNF), row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+    row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
+    finalTable.addRows(-1, tableValuesNekontaktas);
+
+  }
+
+let n = 760;
 const [subarray, remainingElements] = findSubarrays(n, subjects);
 if (subarray.length > 0) {
  // console.log(subarray); // Pagrindinė kortelė
@@ -55,7 +503,7 @@ if (subarray.length > 0) {
 
 }
 
-  while (subarray.length == 0 && n > 715) {
+  while (subarray.length == 0 && n > 755) {
     const [subarray, remainingElements] = findSubarrays(n--, subjects);
     if (subarray.length != 0) {
       //console.log(subarray);
@@ -95,80 +543,21 @@ if (subarray.length > 0) {
       row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
       finalTablePapildoma.addRows(-1, tableValuesPapildomaNekontaktas);
      
-
       break;
     }
   }
-
-
-
-//console.log(tableValues);
-
-
-//}
-//   for (let row of rows) {
-
-//   let [Eil, Dalykas, Semestras, DPaskaitos, DPraktikumaiValandos, DPraktikumaiPogrupiai, NPaskaitos, NPraktikumai, Egzaminas, Kita, Konsultacijos, VisoKontaktas, TarpSkaicius, TarpValandos, SavarankiskasDarbas, PraktikosAtaskaitos, KursiniaiDarbai, NekontaktinisEgzaminas, NekontaktinisKita, NekontaktinisViso, Viso, AtsiskaitymoForma, Kreditai, Pastabos] = row;
-
-//   vkdeFormData.push({
-//     Eil:Eil, Dalykas:Dalykas, Semestras:Semestras, DPaskaitos:DPaskaitos,
-//     DPraktikumaiValandos:DPraktikumaiValandos, DPraktikumaiPogrupiai: DPraktikumaiPogrupiai, NPaskaitos: NPaskaitos, NPraktikumai:NPraktikumai, Egzaminas:Egzaminas, Kita:Kita, Konsultacijos:Konsultacijos, VisoKontaktas:VisoKontaktas, TarpSkaicius:TarpSkaicius, TarpValandos:TarpValandos,
-//     SavarankiskasDarbas: SavarankiskasDarbas, PraktikosAtaskaitos:PraktikosAtaskaitos,
-//     KursiniaiDarbai:KursiniaiDarbai, NekontaktinisEgzaminas:NekontaktinisEgzaminas, NekontaktinisKita:NekontaktinisKita, NekontaktinisViso:NekontaktinisKita, Viso:Viso, AtsiskaitymoForma:AtsiskaitymoForma, Kreditai:Kreditai, Pastabos:Pastabos
-//   })
-// }
-
-  // const otherSheet = workbook.getWorksheet("VK4 Forma");
-  // const otherTable = otherSheet.getTable("TarifikacijaNekontaktinis");
-  // const otherRange = otherTable.getRange();
-  // let otherRows = otherRange.getValues();
-
-  // for (let row of otherRows) {
-
-  //   let [Grupe, Semestras, VF, VNF, StudentuSk, ArStrautas, Fakultetas,
-  //   StudijuPrograma, StudijuForma, KuruojantiKatedra, Laikotarpis] = row;
-
-  //   groups.push({
-  //    Grupe: Grupe, Semestras:Semestras, VF:VF, VNF:VNF, 
-  //    StudentuSk:StudentuSk,ArStrautas:ArStrautas, Fakultetas:Fakultetas,StudijuPrograma: StudijuPrograma,StudijuForma: StudijuForma, 
-  //    KuruojantiKatedra: KuruojantiKatedra, Laikotarpis: Laikotarpis
-  //   })
-
-  // }
-
-//   const finalSheet = workbook.getWorksheet("VK02DE");
-//   const finalTable = finalSheet.getTables()[0];
-
-
-// for(let row of vkdeFormData){
-//   for (let col of groups) {
-//     if (+col.Semestras.toString() == 1 && +row.Semestras.toString() == 1 && col.Grupe.toString().includes("22")){
-
-//       let total_students = +col.VF.toString() + +col.VNF.toString();
-//     finalTable.addRow(-1, 
-//     [
-//       row.Eil, row.Dalykas, col.Grupe, col.VF, col.VNF,total_students, col.Semestras,
-//       row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
-//       row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas,
-//       row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas, row.PraktikosAtaskaitos, row.KursiniaiDarbai, row.NekontaktinisEgzaminas,
-//       row.NekontaktinisKita, row.NekontaktinisViso, row.Viso, "", col.KuruojantiKatedra
-//     ]);
-//     }
-// }
-// }
-//  console.log(JSON.stringify(groups));
-
-  // console.log(JSON.stringify(records));
-  // return JSON.stringify(records);  
 }
 function findSubarrays(n: number, arr: DatabaseData[]): [DatabaseData[], DatabaseData[]]{
-  if (n < 715 || n > 720) {
+  if (n < 755 || n > 760) {
     console.log("n must be between 715 and 720")
     return [[], []];
   }
   for (let i = 0; i < arr.length; i++) {
     for (let j = i; j < arr.length; j++) {
-      if (arr.slice(i, j + 1).reduce((acc, cur) => acc + +cur.VISOSTUDENTU, 0) === n) {
+
+    
+
+      if (arr.slice(i, j + 1).reduce((acc, cur) => acc + (+cur.DPraktikumaiValandos * +cur.DPraktikumaiPogrupiai + +cur.DPaskaitos + +cur.NPaskaitos + +cur.NPraktikumai * +cur.DPraktikumaiPogrupiai), 0) === n) {
         let subArray = arr.slice(i, j + 1);
         let remainingElements = arr.filter(x => !subArray.includes(x));
         return [subArray, remainingElements];
