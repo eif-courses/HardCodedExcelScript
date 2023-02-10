@@ -1,1 +1,8 @@
+## VALANDOS IŠ DROPDOWN
+```
 =LOOKUP(10^6,1*MID([@Veikla],MIN(FIND({0,1,2,3,4,5,6,7,8,9},[@Veikla]&"0123456789",FIND("iki"," "&[@Veikla]&" "))),{2,3,4,5,6}))
+```
+## APRIBOJIMAI DATA VALIDATION
+```
+=M56 >= N56
+```
