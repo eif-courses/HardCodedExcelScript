@@ -6,3 +6,19 @@
 ```
 =M56 >= N56
 ```
+
+
+## 
+Teorija:
+Target	Criteria
+Cells with 3 characters	```"???"```
+Cells equal to ```"xyz", "xaz", "xbz", etc	"x?z"```
+Cells that begin with ```"xyz"	"xyz*"```
+Cells that end with ```"xyz"	"*xyz"```
+Cells that contain ```"xyz"	"*xyz*"```
+Cells that contain text in A1	```"*"&A1&"*"```
+
+```
+=SUMIFS(N19:N28,C19:C28,"*,*")
+=SUMIFS(N19:N28,C19:C28,"*E")
+```
