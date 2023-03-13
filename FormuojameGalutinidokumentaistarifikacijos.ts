@@ -100,9 +100,44 @@ let nekontaktas: NeKontaktas[] = [];
       })
     }
   }
-    console.log(nekontaktas)
-    console.log(kontaktas)
+  const masterArray: (Kontaktas | NeKontaktas)[] = [];
+  for (const kontaktas_item of kontaktas) {
+    const matchingNeKontaktas = nekontaktas.find(neKontaktas_item =>
+      neKontaktas_item.Grupe === kontaktas_item.Grupe &&
+      neKontaktas_item.Semestras === kontaktas_item.Semestras &&
+      neKontaktas_item.Dalykas === kontaktas_item.Dalykas
+    );
+    if (matchingNeKontaktas) {
+      // Combine Kontaktas and NeKontaktas objects into a single object
+      const combinedObject = {
+        ...kontaktas_item,
+        ...matchingNeKontaktas
+      };
+      masterArray.push(combinedObject);
+    } else {
+      // If there is no matching NeKontaktas object, add Kontaktas object with default values for missing properties
+      const defaultNeKontaktas = {
+        Tarpiniai_Sk: "",
+        Tarpiniai_val: "",
+        Savarankiski_darbai: "",
+        PraktikosAtaskaitos: "",
+        NuotolinisMokymasis: "",
+        KursiniaiDarbai: "",
+        Egzaminas: "",
+        Kita: "",
+        VisoNekontaktas: "",
+        Destytojas: "",
+        Katedra: ""
+      };
+      const combinedObject = {
+        ...kontaktas_item,
+        ...defaultNeKontaktas
+      };
+      masterArray.push(combinedObject);
+    }
   }
+  console.log(masterArray)
+}
 
 
 interface Kontaktas{
