@@ -19,25 +19,6 @@ let subjects: DatabaseData[] = planData[0] as DatabaseData[];
     //   "Email": "m.gzegozevskis@ad.viko.lt"
     // } as Metaduomenys;
 
-    const finalSheet = workbook.getWorksheet("Duomenys");
-    const finalTable = finalSheet.getTable("metaduomenys");
-    const sheetProtection = finalSheet.getProtection();
-
-    if (!sheetProtection.getProtected()) {
-      finalTable.addRow(-1,
-        [metaD.Email,
-          metaD.Pareigos,
-          metaD.Koeficientas,
-          metaD.Tipas,
-          metaD.PAB,
-          metaD.Pilnas_Vardas,
-          metaD.Katedra]);
-
-      let protectionOptions: ExcelScript.WorksheetProtectionOptions = {
-        selectionMode: ExcelScript.ProtectionSelectionMode.none
-      }
-      sheetProtection.protect(protectionOptions, "labas");
-    }
 
 
 
@@ -484,14 +465,14 @@ let subjects: DatabaseData[] = planData[0] as DatabaseData[];
     const table = sheet.getTable("TarifikacijaKontaktas");
     //for(let row of subjects){
     const tableValues = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe,
-    (+row.VF+ +row.VNF), row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
+    row.VISOSTUDENTU, row.Semestras, row.DPaskaitos, row.DPraktikumaiValandos, row.DPraktikumaiPogrupiai,
     row.NPaskaitos, row.NPraktikumai, row.Egzaminas, row.Kita, row.Konsultacijos, row.VisoKontaktas, "", ""]);
     table.addRows(-1, tableValues);
 
     //const finalSheet = workbook.getWorksheet("VK3 forma");
     const finalTable = sheet.getTable("TarifikacijaNekontaktinis");
     const tableValuesNekontaktas = subjects.map(row => [row.Eil, row.Dalykas, row.Grupe,
-      (+row.VF + +row.VNF), row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
+      row.VISOSTUDENTU, row.Semestras, row.TarpSkaicius, row.TarpValandos, row.SavarankiskasDarbas,
     row.PraktikosAtaskaitos, "", row.KursiniaiDarbai, row.NekontaktinisEgzaminas, row.NekontaktinisKita, row.NekontaktinisViso, "", ""]);
     finalTable.addRows(-1, tableValuesNekontaktas);
 
@@ -590,6 +571,72 @@ if (subarray.length > 0) {
       break;
     }
   }
+
+  const finalSheet = workbook.getWorksheet("Duomenys");
+  const finalTable = finalSheet.getTable("metaduomenys");
+  const sheetProtection = finalSheet.getProtection();
+
+// PAGRINDINE KORTELE
+  const pagrindine_kortele = workbook.getWorksheet("VK3 forma");
+  let pagrindine_kortele_range = pagrindine_kortele.getUsedRange();
+  let reiksmes = pagrindine_kortele_range.getValues();
+  
+  let surastiEtatoDalis = pagrindine_kortele_range.find("Tame tarpe etato dalis, dėstant srautu", {
+    completeMatch: true,
+  });
+
+  let surasti_viso = pagrindine_kortele_range.find("Etatų skaičius", {
+    completeMatch: true,
+  });
+
+
+  const PAB_VF = surasti_viso.getAbsoluteResizedRange(2, 0);
+  const DVI_PAB_VF = surastiEtatoDalis.getOffsetRange(1, 0);
+  const PEN_PAB_VF = surastiEtatoDalis.getOffsetRange(1, 2);
+  
+// ------------------------------------
+
+// Papildoma kortele
+  const papildoma_kortele = workbook.getWorksheet("VK4 forma");
+  let papildoma_kortele_range = papildoma_kortele.getUsedRange();
+  let reiksmesPapildoma = papildoma_kortele_range.getValues();
+  let surastiEtatoDalisPapildoma = papildoma_kortele_range.find("Tame tarpe etato dalis, dėstant srautu", {
+    completeMatch: true,
+  });
+
+  let surasti_viso_papildoma = papildoma_kortele_range.find("Etatų skaičius", {
+    completeMatch: true,
+  });
+
+  const PAPILDOMA_PAB_VF = surasti_viso_papildoma.getAbsoluteResizedRange(2, 0);
+  const PAPILDOMA_DVI_PAB_VF = surastiEtatoDalisPapildoma.getOffsetRange(1, 0);
+  const PAPILDOMA_PEN_PAB_VF = surastiEtatoDalisPapildoma.getOffsetRange(1, 2);
+
+//-------------------------
+
+
+
+  if (!sheetProtection.getProtected()) {
+    finalTable.addRow(-1,
+      [metaD.Email,
+      metaD.Pareigos,
+      metaD.VardasPavarde,
+      metaD.PAB,
+        +PAB_VF,
+        +DVI_PAB_VF,
+        +PEN_PAB_VF,
+        +PAPILDOMA_PAB_VF,
+        +PAPILDOMA_DVI_PAB_VF,
+        +PAPILDOMA_PEN_PAB_VF,
+      metaD.Tipas]);
+
+    let protectionOptions: ExcelScript.WorksheetProtectionOptions = {
+      selectionMode: ExcelScript.ProtectionSelectionMode.none
+    }
+    sheetProtection.protect(protectionOptions, "labas");
+  }
+
+
 }
 function findSubarrays(n: number, arr: DatabaseData[]): [DatabaseData[], DatabaseData[]]{
   if (n < 700 || n > 760) {
@@ -640,7 +687,8 @@ interface DatabaseData{
   NekontaktinisViso: (string | number | boolean),
   Viso: (string | number | boolean),
   Destytojas: (string | number | boolean),
-  Katedra: (string | number | boolean)
+  Katedra: (string | number | boolean),
+  KiekSavaitiniuPaskaitu: (string | number | boolean)
 }
 
 
@@ -673,13 +721,12 @@ interface VKDE01 {
 
 
 interface Metaduomenys {
-  Pilnas_Vardas: (string | number | boolean),
+  Email: (string | number | boolean),
   Pareigos: (string | number | boolean),
-  Koeficientas: (string | number | boolean),
-  PAB: (string | number | boolean),
-  Katedra: (string | number | boolean),
+  VardasPavarde: (string | number | boolean),
   Tipas: (string | number | boolean),
-  Email: (string | number | boolean)
+  PAB: (string | number | boolean),
+  Katedra: (string | number | boolean)
 }
 
 
@@ -698,50 +745,5 @@ interface GroupPlan {
   Laikotarpis: (string | number | boolean)
 }
 
-
-interface StudyPlan{
-  Eil: (string | number | boolean),
-  Pavadinimas: (string | number | boolean),
-  Tipas: (string | number | boolean),
-  P1: (string | number | boolean),
-  Pr1: (string | number | boolean),
-  S1: (string | number | boolean),
-  Kr1: (string | number | boolean),
-  V1: (string | number | boolean),
-  P2: (string | number | boolean),
-  Pr2: (string | number | boolean),
-  S2: (string | number | boolean),
-  Kr2: (string | number | boolean),
-  V2: (string | number | boolean),
-  P3: (string | number | boolean),
-  Pr3: (string | number | boolean),
-  S3: (string | number | boolean),
-  Kr3: (string | number | boolean),
-  V3: (string | number | boolean),
-  P4: (string | number | boolean),
-  Pr4: (string | number | boolean),
-  S4: (string | number | boolean),
-  Kr4: (string | number | boolean),
-  V4: (string | number | boolean),
-  P5: (string | number | boolean),
-  Pr5: (string | number | boolean),
-  S5: (string | number | boolean),
-  Kr5: (string | number | boolean),
-  V5: (string | number | boolean),
-  P6: (string | number | boolean),
-  Pr6: (string | number | boolean),
-  S6: (string | number | boolean),
-  Kr6: (string | number | boolean),
-  V6: (string | number | boolean),
-  P7: (string | number | boolean),
-  Pr7: (string | number | boolean),
-  S7: (string | number | boolean),
-  Kr7: (string | number | boolean),
-  V7: (string | number | boolean),
-  Valandos: (string | number | boolean),
-  Kreditai: (string | number | boolean),
-  Semestras: (string | number | boolean),
-  DalykoKatedra: (string | number | boolean)
-}
   
 
